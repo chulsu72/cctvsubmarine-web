@@ -188,15 +188,32 @@ h1 {
                 </div>
 
                 <div class="download-mini">
-                    <!-- 
-                    <a class="btn download-btn" href="/downloads/nvr.zip"> 
-                        Download NVR
-                    </a>
-                    -->
-
+<!--
                     <a class="btn download-btn" href="#" onclick="showPreparing(); return false;">
                         Download NVR
                     </a>                    
+-->
+
+<!-- (중요) 정식 배포본이 하나라도 존재하면 마지막 등록한 릴리즈 버전이 자동으로 연결 (github release 기능) -->
+<!--
+                    <a
+                        class="btn download-btn"
+                        href="https://github.com/chulsu72/cctvsubmarine-releases/releases/latest"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Download NVR
+                    </a>
+-->
+
+<!-- (중요) pre-release 는 마지막 등록 릴리즈를 자동 연결하지 않으므로 직접 tag 에 연결하여 시험 -->
+                    <a
+                        class="btn download-btn"
+                        href="https://github.com/chulsu72/cctvsubmarine-releases/releases/tag/v1.0.1.0-test"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Download NVR
+                    </a>
+
                 </div>
 
             </div>
@@ -294,8 +311,10 @@ window.onload = sendHeight;
 window.onresize = sendHeight;
 </script>
 
+<!--
 <script>
 function showPreparing() {
     alert("NVR 다운로드는 현재 준비중입니다.\n조금만 기다려 주세요.");
 }
 </script>
+-->
