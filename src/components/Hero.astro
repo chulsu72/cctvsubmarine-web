@@ -150,10 +150,9 @@ const capabilities = ['LIVE', 'RECORD', 'SEARCH', 'PLAYBACK', 'AI READY'];
   }
 
   .viewer-shell :global(img) {
+    display: block;
     width: 100%;
-    aspect-ratio: 16 / 9.6;
-    object-fit: cover;
-    object-position: left top;
+    height: auto;
   }
 
   @media (max-width: 68rem) {
