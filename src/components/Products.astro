@@ -1,0 +1,38 @@
+---
+import SectionHeader from './common/SectionHeader.astro';
+import { products } from '../data/products';
+---
+
+<section class="section" id="products">
+  <div class="container">
+    <SectionHeader eyebrow="PRODUCTS" title="Applications above. Core technology beneath." lead="Deploy the product that fits the operation while sharing a focused native video foundation across the platform." />
+    <div class="product-grid">
+      {products.map((product) => (
+        <article class:list={{ core: product.kind === 'Technology' }}>
+          <span class="code">{product.code}</span>
+          <div>
+            <p class="kind">{product.kind}</p>
+            <h3>{product.name}</h3>
+            <p class="description">{product.description}</p>
+            <span class="tag">{product.tag}</span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); }
+  .product-grid { display: grid; margin-top: 3rem; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  article { position: relative; display: grid; min-height: 11rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); grid-template-columns: 3.5rem 1fr; gap: 1rem; }
+  article.core { border-color: rgba(59,130,246,.65); background: linear-gradient(135deg, var(--color-brand-soft), var(--color-surface)); }
+  .code { display: flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; border-radius: 50%; color: var(--color-brand-hover); background: var(--color-brand-soft); font-size: .7rem; font-weight: 800; }
+  .kind { color: var(--color-text-muted); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  h3 { margin-top: .2rem; font-size: 1.4rem; }
+  .description { max-width: 29rem; margin-top: .4rem; color: var(--color-text-secondary); font-size: .87rem; }
+  .tag { display: inline-block; margin-top: 1rem; color: var(--color-brand-hover); font-size: .68rem; font-weight: 700; letter-spacing: .07em; }
+  .arrow { position: absolute; top: 1.5rem; right: 1.5rem; color: var(--color-text-muted); font-size: 1.25rem; }
+  @media (max-width: 46rem) { .product-grid { grid-template-columns: 1fr; } }
+</style>

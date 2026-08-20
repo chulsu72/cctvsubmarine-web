@@ -1,0 +1,50 @@
+---
+import SectionHeader from './common/SectionHeader.astro';
+
+const nodes = [
+  { tag: 'SOURCE', title: 'IP Cameras', sub: 'RTSP / H.264' },
+  { tag: 'INGEST', title: 'Recorder', sub: 'Record · Index · Event' },
+  { tag: 'TRANSPORT', title: 'VMS Network', sub: 'Media & metadata' },
+  { tag: 'OPERATIONS', title: 'VMS Client', sub: 'Live · Search · Playback · AI' },
+];
+---
+
+<section class="section" id="architecture">
+  <div class="container">
+    <SectionHeader eyebrow="SYSTEM ARCHITECTURE" title="A clear path from camera to operator." lead="A simplified view of the platform: acquire video, record and index it, transport media and metadata, then operate from the VMS client." />
+    <div class="architecture-panel">
+      <div class="flow">
+        {nodes.map((node, index) => (
+          <>
+            <article>
+              <span>{node.tag}</span>
+              <h3>{node.title}</h3>
+              <p>{node.sub}</p>
+            </article>
+            {index < nodes.length - 1 && <i aria-hidden="true">→</i>}
+          </>
+        ))}
+      </div>
+      <div class="modes">
+        <p><strong>PRIVATE / NVR</strong><span>Camera → Local Viewer → Storage</span></p>
+        <p><strong>PUBLIC / VMS</strong><span>Recorder → VMS Client</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+  .architecture-panel { margin-top: 3rem; padding: 3rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: rgba(7,16,28,.75); box-shadow: var(--shadow-panel); }
+  .flow { display: grid; align-items: center; grid-template-columns: 1fr auto 1.15fr auto 1.15fr auto 1.3fr; gap: 1rem; }
+  article { min-height: 8.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  article span { color: var(--color-brand-hover); font-size: .65rem; font-weight: 800; letter-spacing: .1em; }
+  h3 { margin-top: .7rem; font-size: 1.15rem; }
+  article p { margin-top: .35rem; color: var(--color-text-muted); font-size: .78rem; }
+  .flow i { color: var(--color-brand-primary); font-size: 1.5rem; font-style: normal; }
+  .modes { display: grid; margin-top: 2rem; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .modes p { display: flex; padding: 1rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); justify-content: space-between; gap: 1rem; color: var(--color-text-secondary); font-size: .78rem; }
+  .modes strong { color: var(--color-brand-hover); letter-spacing: .06em; }
+  @media (max-width: 58rem) { .flow { grid-template-columns: 1fr; } .flow i { justify-self: center; transform: rotate(90deg); } }
+  @media (max-width: 42rem) { .architecture-panel { padding: 1.25rem; } .modes { grid-template-columns: 1fr; } .modes p { align-items: flex-start; flex-direction: column; } }
+</style>

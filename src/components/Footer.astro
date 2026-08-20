@@ -1,0 +1,31 @@
+---
+const githubUrl = 'https://github.com/chulsu72/cctvsubmarine-web';
+---
+
+<footer>
+  <div class="container">
+    <div class="cta">
+      <div><h2>Explore CctvSubmarine as it evolves.</h2><p>Follow development, test releases and project updates on GitHub.</p></div>
+      <a class="button button--primary" href={githubUrl} target="_blank" rel="noreferrer">View on GitHub</a>
+    </div>
+    <div class="footer-row">
+      <div><strong>CctvSubmarine</strong><p>AI-powered CCTV VMS research & development.</p></div>
+      <nav aria-label="Footer navigation"><a href="#products">Products</a><a href="#features">Features</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a></nav>
+    </div>
+    <div class="legal"><span>© {new Date().getFullYear()} CctvSubmarine</span><span>Figma → Astro → GitHub</span></div>
+  </div>
+</footer>
+
+<style>
+  footer { padding: 3rem 0 2rem; background: #050b13; }
+  .cta { display: flex; min-height: 8rem; align-items: center; justify-content: space-between; padding: 2rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-lg); background: linear-gradient(120deg, rgba(59,130,246,.18), rgba(16,29,45,.9)); gap: 2rem; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -.035em; }
+  .cta p { margin-top: .4rem; color: var(--color-text-secondary); }
+  .footer-row { display: flex; margin-top: 3.5rem; align-items: flex-start; justify-content: space-between; gap: 2rem; }
+  .footer-row strong { font-size: 1.2rem; }
+  .footer-row p { margin-top: .2rem; color: var(--color-text-muted); font-size: .82rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 1.5rem; color: var(--color-text-secondary); font-size: .8rem; }
+  nav a:hover { color: var(--color-brand-hover); }
+  .legal { display: flex; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border); justify-content: space-between; color: var(--color-text-muted); font-size: .7rem; }
+  @media (max-width: 42rem) { .cta, .footer-row { align-items: stretch; flex-direction: column; } .legal { gap: .5rem; flex-direction: column; } }
+</style>

@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './common/SectionHeader.astro';
+import searchView from '../assets/images/screenshots/search-screen.png';
+import timeline from '../assets/images/screenshots/search-screen-timeline.png';
+import eventResults from '../assets/images/screenshots/search-screen-search-event-results.png';
+import aiSettings from '../assets/images/screenshots/settings-screen-camera-ai.png';
+
+const detailShots = [
+  { src: timeline, title: 'Timeline Playback', copy: 'Segment-aware navigation and precise playback control.', alt: 'CctvSubmarine recorded-video timeline' },
+  { src: eventResults, title: 'Event Search', copy: 'AI events organized with thumbnails, channels and timestamps.', alt: 'CctvSubmarine AI event search results' },
+  { src: aiSettings, title: 'AI Detection', copy: 'Person and vehicle detection controls at the camera level.', alt: 'CctvSubmarine camera AI detection settings' },
+];
+---
+
+<section class="section" id="screenshots">
+  <div class="container">
+    <SectionHeader eyebrow="PRODUCT IN ACTION" title="Built for dense video operations." lead="Real application captures from live monitoring, event search, timeline playback and camera-level AI configuration." />
+    <div class="gallery">
+      <figure class="main-shot">
+        <div class="shot-bar"><span>SEARCH & PLAYBACK</span><span>4 CHANNEL VIEW</span></div>
+        <Image src={searchView} alt="CctvSubmarine search and playback interface" format="webp" quality={84} widths={[720, 1080, 1440]} sizes="(max-width: 960px) 100vw, 68vw" />
+      </figure>
+      <div class="detail-grid">
+        {detailShots.map((shot) => (
+          <article>
+            <div class="detail-image"><Image src={shot.src} alt={shot.alt} format="webp" quality={82} width={420} /></div>
+            <div><h3>{shot.title}</h3><p>{shot.copy}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); }
+  .gallery { display: grid; margin-top: 3rem; grid-template-columns: minmax(0, 1.7fr) minmax(18rem, .9fr); gap: 1rem; }
+  figure { overflow: hidden; margin: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: #060b12; }
+  .main-shot { align-self: start; }
+  .shot-bar { display: flex; min-height: 2.7rem; align-items: center; justify-content: space-between; padding: 0 1rem; border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-size: .65rem; font-weight: 700; letter-spacing: .09em; }
+  figure :global(img) { width: 100%; height: auto; }
+  .detail-grid { display: grid; gap: .75rem; }
+  article { display: grid; min-height: 6.5rem; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); grid-template-columns: 8rem 1fr; }
+  .detail-image { min-height: 6.5rem; overflow: hidden; background: #060b12; }
+  .detail-image :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  article > div:last-child { align-self: center; padding: 1rem; }
+  h3 { font-size: .95rem; }
+  article p { margin-top: .3rem; color: var(--color-text-muted); font-size: .75rem; line-height: 1.45; }
+  @media (max-width: 60rem) { .gallery { grid-template-columns: 1fr; } .detail-grid { grid-template-columns: repeat(3, 1fr); } article { grid-template-columns: 1fr; } }
+  @media (max-width: 42rem) { .detail-grid { grid-template-columns: 1fr; } article { grid-template-columns: 7rem 1fr; } }
+</style>

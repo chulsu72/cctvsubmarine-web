@@ -1,0 +1,35 @@
+---
+import SectionHeader from './common/SectionHeader.astro';
+import { roadmap } from '../data/roadmap';
+---
+
+<section class="section" id="roadmap">
+  <div class="container">
+    <SectionHeader eyebrow="ROADMAP" title="Evolving from local NVR to distributed VMS." lead="A practical sequence that strengthens the recording foundation before expanding into AI operations and centralized management." />
+    <ol>
+      {roadmap.map((item, index) => (
+        <li class:list={{ current: index === 0 }}>
+          <span class="point"></span>
+          <p class="stage">{item.stage}</p>
+          <h3>{item.title}</h3>
+          <ul>{item.items.map((detail) => <li>{detail}</li>)}</ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); }
+  ol { position: relative; display: grid; margin: 3rem 0 0; padding: 0; grid-template-columns: repeat(4, 1fr); gap: 1rem; list-style: none; }
+  ol::before { position: absolute; top: .35rem; right: 12%; left: 12%; height: 2px; background: var(--color-border-strong); content: ''; }
+  ol > li { position: relative; padding: 2rem 1.35rem 1.4rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  .point { position: absolute; z-index: 1; top: -.1rem; left: 50%; width: .9rem; height: .9rem; border: 3px solid var(--color-bg-primary); border-radius: 50%; background: var(--color-border-strong); transform: translateX(-50%); }
+  .current .point { background: var(--color-brand-primary); box-shadow: 0 0 18px rgba(59,130,246,.9); }
+  .stage { color: var(--color-brand-hover); font-size: .68rem; font-weight: 800; letter-spacing: .1em; }
+  h3 { margin-top: .5rem; font-size: 1.2rem; }
+  ul { margin: .9rem 0 0; padding-left: 1.1rem; color: var(--color-text-muted); font-size: .8rem; }
+  ul li + li { margin-top: .3rem; }
+  @media (max-width: 58rem) { ol { grid-template-columns: repeat(2, 1fr); } ol::before { display: none; } .point { left: 1.35rem; transform: none; } }
+  @media (max-width: 36rem) { ol { grid-template-columns: 1fr; } }
+</style>

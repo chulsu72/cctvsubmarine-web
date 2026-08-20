@@ -1,0 +1,22 @@
+---
+import SectionHeader from './common/SectionHeader.astro';
+import { technicalFeatures } from '../data/technicalFeatures';
+---
+
+<section class="section">
+  <div class="container">
+    <SectionHeader eyebrow="TECHNICAL FEATURES" title="Native performance where video needs it." lead="Focused building blocks for ingest, rendering, recording, indexing and intelligent client workflows." />
+    <ul>
+      {technicalFeatures.map((feature) => <li><i></i>{feature}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .section { padding: 5.5rem 0; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+  ul { display: grid; margin: 2.5rem 0 0; padding: 0; grid-template-columns: repeat(4, 1fr); gap: .75rem; list-style: none; }
+  li { display: flex; min-height: 3.25rem; align-items: center; padding: .8rem 1rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); background: rgba(16,29,45,.76); font-size: .78rem; font-weight: 600; }
+  i { width: .55rem; height: .55rem; margin-right: .7rem; flex: 0 0 auto; border-radius: 50%; background: var(--color-brand-primary); box-shadow: 0 0 12px rgba(59,130,246,.7); }
+  @media (max-width: 62rem) { ul { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 36rem) { ul { grid-template-columns: 1fr; } }
+</style>
